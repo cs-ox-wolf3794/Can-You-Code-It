@@ -39,13 +39,24 @@ elif os.path.isfile('vcap-local.json'):
 # When running this app on the local machine, default the port to 8080
 port = int(os.getenv('PORT', 8080))
 
-@app.route('/')
-def home():
+@app.route('/Home')
+def Home():
     return render_template('index.html')
 
 @app.route('/')
-def about():
+def home():
+    return render_template('index.html')
+@app.route('/AboutUs')
+def AboutUs():
     return render_template('aboutus.html')
+
+@app.route('/TheChallenges')
+def TheChallenges():
+    return render_template('challenges.html')
+
+@app.route('/FAQ')
+def FAQ():
+    return render_template('faq.html')
 
 # /* Endpoint to greet and add a new visitor to database.
 # * Send a POST request to localhost:8080/api/visitors with body
