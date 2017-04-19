@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Demo 1 | Can You Code It</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="static/css/lightbox.css" rel="stylesheet"> 
+    <link href="static/css/animate.min.css" rel="stylesheet"> 
+    <link href="static/css/main.css" rel="stylesheet">
+    <link href="static/css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="static/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="static/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="static/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="static/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+    <header id="header">      
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 overflow">
+                   <div class="social-icons pull-right">
+                        <ul class="nav nav-pills">
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div> 
+                </div>
+             </div>
+        </div>
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="/Home">
+                        <h1><img src="static/images/logo.png" alt="logo"></h1>
+                    </a>
+                    
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/Home">Home</a></li>
+                        <li><a href="/AboutUs">About Us</a></li>
+                        <li class="active"><a href="/TheChallenges">The Challenges</a></li>  
+                        <li><a href="/FAQ">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <form role="form">
+                        <i class="fa fa-search"></i>
+                        <div class="field-toggle">
+                            <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/#header-->
+
+
+
+    
+    
+    <section id="shortcodes">
+        <div class="container">
+            
+            Demo challenge 1
+                    
+        </div><!--/#accordion-container-->
+    <div class="container">
+        <h1>Can you Code it?</h1>
+        <div id="nameInput" class="input-group-lg center-block helloInput">
+            <p class="lead">Pick your favorite version?</p>
+            <!--<input id="user_name" type="text" class="form-control" placeholder="name" aria-describedby="sizing-addon1" value="" />-->
+            <select id="selectMe">
+                <option value="multiple">Python 2</option>
+                <option value="programming">Python 3</option>
+            </select>
+    <br><br><br>
+        </div>
+        <p id="response" class="lead text-center"></p>
+
+        <p id="databaseNames" class="lead text-center"></p>
+
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        //Submit data when enter key is pressed
+        $('#user_name').keydown(function(e) {
+            var name = $('#user_name').val();
+            if (e.which == 13 && name.length > 0) { //catch Enter key
+                //POST request to API to create a new visitor entry in the database
+                $.ajax({
+                  method: "POST",
+                  url: "./api/visitors",
+                  contentType: "application/json",
+                  data: JSON.stringify({name: name })
+                })
+                .done(function(data) {
+                    $('#response').html(data);
+                    $('#nameInput').hide();
+                    getNames();
+                });
+            }
+        });
+
+        //Retreive all the visitors from the database
+        function getNames(){
+          $.get("./api/visitors")
+              .done(function(data) {
+                  if(data.length > 0) {
+                    $('#databaseNames').html("Database contents: " + JSON.stringify(data));
+                  }
+              });
+          }
+
+          //Call getNames on page load.
+          //getNames();
+
+        $(document).ready(function () {
+        $('.group').hide();
+        $('#multiple').show();
+        $('#selectMe').change(function () {
+            $('.group').hide();
+            $('#'+$(this).val()).show();
+        })
+    });
+    </script>
+
+    
+
+    <div id="multiple" class="group" >
+        <iframe src="https://trinket.io/embed/python/843e98c9a1" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+    </div>
+
+    <div id="programming" class="group" >
+        <iframe src="https://trinket.io/embed/python3/1b240c7dd5" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+    </div>
+    
+
+    <!--
+
+    -->
+
+<!--style="position:absolute; clip:rect(190px,700px,500px,250px); top:-1px; left:-1px;"-->
+    </section>           
+
+    
+    
+
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <br/><br/>
+                    <img src="static/images/home/under.png" class="img-responsive inline" alt="">
+                    <p>&copy; 2017 Can You C0de 1t?</p>
+                </div>
+              
+                <!--
+                <div class="col-sm-12">
+                    <div class="col-sm-12 text-center bottom-separator">
+                    <div class="copyright-text text-center">
+                        <p>&copy; 2017 Can You C0de 1t?</p>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+
+
+    <script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="static/js/wow.min.js"></script>
+    <script type="text/javascript" src="static/js/main.js"></script>   
+</body>
+</html>

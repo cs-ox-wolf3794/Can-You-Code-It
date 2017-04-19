@@ -58,6 +58,22 @@ def TheChallenges():
 def FAQ():
     return render_template('faq.html')
 
+@app.route('/Demo1_0')
+def Demo1_0():
+    return render_template('demoChallenge1_0.html')
+    
+@app.route('/Demo2_0')
+def Demo2_0():
+    return render_template('demoChallenge2_0.html')
+
+@app.route('/Demo1_1')
+def Demo1_1():
+    return render_template('demoChallenge1_1.html')
+
+@app.route('/Demo2_1')
+def Demo2_1():
+    return render_template('demoChallenge2_1.html')
+
 # /* Endpoint to greet and add a new visitor to database.
 # * Send a POST request to localhost:8080/api/visitors with body
 # * {
