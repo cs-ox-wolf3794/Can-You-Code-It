@@ -72,6 +72,104 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Code attributes', 'Score'],
+          ['Style',     Math.random()],
+          ['Lines of code',      Math.random()],
+          ['Execution time',  Math.random()],
+          ['Innovation', Math.random()],
+          ['CPU resourcing',    Math.random()]
+        ]);
+
+        var options = {
+          title: 'Your code analysis'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Code attributes', 'Score'],
+          ['Style',     Math.random()],
+          ['Lines of code',      Math.random()],
+          ['Execution time',  Math.random()],
+          ['Innovation', Math.random()],
+          ['CPU resourcing',    Math.random()]
+        ]);
+
+        var options = {
+          title: 'Your code analysis'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Code attributes', 'Score'],
+          ['Run time', Math.random() *100],
+          ['Appearence', Math.random() *100],
+          ['Python Indentations', Math.random() *100],
+          ['Line count', Math.random() *100],
+          ['Duplication probability', Math.random() *100],
+          ['Projected number of lines of code', Math.random() *100],
+          ['pylint func1', Math.random() *100],
+          ['pylint func2', Math.random() *10],
+          ['pylint func3', Math.random() *10],
+          ['unit test #1', Math.random() *10],
+          ['unit test #2', Math.random() *10],
+          ['unit test #3', Math.random() *10],
+          ['Pyntch Metric value 1', Math.random() *100],
+          ['Pyntch Metric value 2', Math.random() *100],
+          ['Pyntch Metric value 3', Math.random() *100],
+          ['Pyntch Metric value 4', Math.random() *100],
+          ['Pyntch Metric value 5', Math.random() *100],
+          ['Pyntch Metric value 6', Math.random() *100],
+          ['Pyntch Metric value 7', Math.random() *100],
+          ['Pyflakes #1', Math.random() *80],
+          ['Pyflakes #2', Math.random() *80],
+          ['Pyflakes #3', Math.random() *80],
+          ['Pyflakes #4', Math.random() *80],
+          ['Radon #1', Math.random() *80],
+          ['Radon #2', Math.random() *50],
+          ['Radon #3', Math.random() *50],
+          ['Radon #4', Math.random() *50],
+          ['Radon #5', Math.random() *50]]);
+
+        var options = {
+          title: 'Individual test case results',
+          legend: { position: 'none' },
+        };
+
+        var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
     </header>
     <!--/#header-->
 
@@ -82,7 +180,8 @@
     <section id="shortcodes">
         <div class="container">
             
-            Challenge content here
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
                     
         </div><!--/#accordion-container-->
     </section>           
