@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <div><h1>Can You Code It - Demo Analysis [Beta version]</h1></div>
+        <div><br/><br/><h1>Can You Code It - Demo Analysis [Beta version]</h1></div>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -83,33 +83,7 @@
         var data = google.visualization.arrayToDataTable([
           ['Code attributes', 'Score'],
           ['Style',     Math.random()],
-          ['Lines of code',      Math.random()],
-          ['Execution time',  Math.random()],
-          ['Innovation', Math.random()],
-          ['CPU resourcing',    Math.random()]
-        ]);
-
-        var options = {
-          title: 'Your code analysis'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-
-    </script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Code attributes', 'Score'],
-          ['Style',     Math.random()],
-          ['Lines of code',      Math.random()],
+          ['Application',      Math.random()],
           ['Execution time',  Math.random()],
           ['Innovation', Math.random()],
           ['CPU resourcing',    Math.random()]
