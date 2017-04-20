@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Demo 2 | Can You Code It</title>
+    <title>Demo 1 | Can You Code It</title>
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/font-awesome.min.css" rel="stylesheet">
     <link href="static/css/lightbox.css" rel="stylesheet"> 
@@ -81,84 +81,148 @@
     
     <section id="shortcodes">
         <div class="container">
+
+        <section id="question">
+        <div class="container">
+
             
-            Challenge content here
+            <div id="accordion-container">
+                <br/><br/><br/>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    Demo Challenge #2: Spy Games.
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+
+                            <img src="static/images/mirror.png" class="img-responsive inline" alt="" style="float:right;", margin:0px 0px 10px 20px;">
+                                <p class="p1"><span class="s1"> For this next challenge, we&rsquo;re going to take a look at the murky world of encryption.</span></p>
+<p class="p1"><span class="s1">People have been trying to hide messages for centuries - the earliest known use of cryptography is found in non-standard hieroglyphs carved into the wall of a tomb from the Old Kingdom of Egypt circa 1900 BCE.</span></p>
+<p class="p1"><span class="s1">These are not thought to be serious attempts at secret communications, however, but rather to have been attempts at mystery, intrigue, or even amusement for literate onlookers.</span></p>
+<p class="p1"><span class="s1">One of the simplest ciphers is a Caesar Cipher, where each letter in the alphabet is replaced by a letter a fixed number of positions down the alphabet, so with a right shift of 3, &lsquo;a&rsquo; becomes &lsquo;d&rsquo;, &lsquo;b&rsquo; becomes &lsquo;e&rsquo; and so forth. </span></p>
+<p class="p1"><span class="s1">So, &ldquo;I love you&rdquo; becomes, &ldquo;L oryi brx&rdquo;&nbsp;</span></p>
+<p class="p1"><span class="s1">Don&rsquo;t worry &hellip; we&rsquo;re going to go with something even simpler!</span></p>
+<p class="p1">&nbsp;</p>
+<p class="p3"><span class="s1"><strong>Challenge #2</strong></span></p>
+<p class="p5"><span class="s1">Write a program that:</span></p>
+<ol class="ol1">
+<li class="li5"><span class="s1">prompts the user to enter a sentence</span></li>
+<li class="li5"><span class="s1">reverses the order of the sentence so that the first word becomes the last, and so on</span></li>
+</ol>
+<p class="p1">&nbsp;</p>
+<p class="p1">&nbsp;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    Editor
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="container">
+                            <h1>Can you Code it?</h1>
+                            <div id="nameInput" class="input-group-lg center-block helloInput">
+                                <p class="lead">Pick your favorite language?</p>
+                                <!--<input id="user_name" type="text" class="form-control" placeholder="name" aria-describedby="sizing-addon1" value="" />-->
+                                <select id="selectMe">
+                                    <option value="multiple">Python 2</option>
+                                    <option value="programming">Python 3</option>
+                                </select>
+                        <br><br><br>
+                            </div>
+                            <p id="response" class="lead text-center"></p>
+
+                            <p id="databaseNames" class="lead text-center"></p>
+
+                        </div>
+                        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                        <!-- Include all compiled plugins (below), or include individual files as needed -->
+                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+                        <script>
+                            //Submit data when enter key is pressed
+                            $('#user_name').keydown(function(e) {
+                                var name = $('#user_name').val();
+                                if (e.which == 13 && name.length > 0) { //catch Enter key
+                                    //POST request to API to create a new visitor entry in the database
+                                    $.ajax({
+                                      method: "POST",
+                                      url: "./api/visitors",
+                                      contentType: "application/json",
+                                      data: JSON.stringify({name: name })
+                                    })
+                                    .done(function(data) {
+                                        $('#response').html(data);
+                                        $('#nameInput').hide();
+                                        getNames();
+                                    });
+                                }
+                            });
+
+                            //Retreive all the visitors from the database
+                            function getNames(){
+                              $.get("./api/visitors")
+                                  .done(function(data) {
+                                      if(data.length > 0) {
+                                        $('#databaseNames').html("Database contents: " + JSON.stringify(data));
+                                      }
+                                  });
+                              }
+
+                              //Call getNames on page load.
+                              //getNames();
+
+                            $(document).ready(function () {
+                            $('.group').hide();
+                            $('#multiple').show();
+                            $('#selectMe').change(function () {
+                                $('.group').hide();
+                                $('#'+$(this).val()).show();
+                            })
+                        });
+                        </script>
+
+                        
+
+                        <div id="multiple" class="group" >
+                            <iframe src="https://trinket.io/embed/python/843e98c9a1" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                        </div>
+
+                        <div id="programming" class="group" >
+                            <iframe src="https://trinket.io/embed/python3/1b240c7dd5" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
                     
         </div><!--/#accordion-container-->
-    <div class="container">
-        <h1>Can you Code it?</h1>
-        <div id="nameInput" class="input-group-lg center-block helloInput">
-            <p class="lead">Pick your favorite version?</p>
-            <!--<input id="user_name" type="text" class="form-control" placeholder="name" aria-describedby="sizing-addon1" value="" />-->
-            <select id="selectMe">
-                <option value="multiple">Python 2</option>
-                <option value="programming">Python 3</option>
-            </select>
-    <br><br><br>
-        </div>
-        <p id="response" class="lead text-center"></p>
+    
 
-        <p id="databaseNames" class="lead text-center"></p>
+    <!--
 
-    </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script>
-        //Submit data when enter key is pressed
-        $('#user_name').keydown(function(e) {
-            var name = $('#user_name').val();
-            if (e.which == 13 && name.length > 0) { //catch Enter key
-                //POST request to API to create a new visitor entry in the database
-                $.ajax({
-                  method: "POST",
-                  url: "./api/visitors",
-                  contentType: "application/json",
-                  data: JSON.stringify({name: name })
-                })
-                .done(function(data) {
-                    $('#response').html(data);
-                    $('#nameInput').hide();
-                    getNames();
-                });
-            }
-        });
-
-        //Retreive all the visitors from the database
-        function getNames(){
-          $.get("./api/visitors")
-              .done(function(data) {
-                  if(data.length > 0) {
-                    $('#databaseNames').html("Database contents: " + JSON.stringify(data));
-                  }
-              });
-          }
-
-          //Call getNames on page load.
-          //getNames();
-
-        $(document).ready(function () {
-        $('.group').hide();
-        $('#multiple').show();
-        $('#selectMe').change(function () {
-            $('.group').hide();
-            $('#'+$(this).val()).show();
-        })
-    });
-    </script>
+    -->
 
 <!--style="position:absolute; clip:rect(190px,700px,500px,250px); top:-1px; left:-1px;"-->
     </section>           
 
-    <div id="multiple" class="group" >
-        <iframe src="https://trinket.io/embed/python/843e98c9a1" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-    </div>
-
-    <div id="programming" class="group" >
-        <iframe src="https://trinket.io/embed/python3/1b240c7dd5" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-    </div>
+    
     
 
 

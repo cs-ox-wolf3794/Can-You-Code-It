@@ -60,7 +60,15 @@ def FAQ():
 
 @app.route('/Demo1_0')
 def Demo1_0():
+     # read the posted values from the UI
     return render_template('demoChallenge1_0.html')
+    _userName = request.form['inputUserName']
+    _solution = request.form['inputSolution']
+    if _name and _email and _password:
+        return json.dumps({'html':'<span>All fields good !!</span>'})
+    else:
+        return json.dumps({'html':'<span>Enter the required fields</span>'})
+    
     
 @app.route('/Demo2_0')
 def Demo2_0():
